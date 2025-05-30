@@ -1,0 +1,69 @@
+{{!-- <h1>Edit Pokémon #{{pokemon.pokemonID}}</h1>
+<form action="/pokemon/{{pokemon.pokemonID}}/edit" method="POST">
+  <label>
+    Level:
+    <input name="level" type="number" min="1" value="{{pokemon.level}}" required>
+  </label><br>
+
+  <label>
+    Species:
+    <select name="speciesName" required>
+      {{#each speciesList}}
+        <option value="{{this.speciesName}}"
+          {{#ifEquals this.speciesName ../pokemon.speciesName}}selected{{/ifEquals}}>
+          {{this.speciesName}} (#{{this.pokedexEntry}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <label>
+    Assigned To (Employee):
+    <select name="employeeID">
+      <option value="" {{#unless pokemon.employeeID}}selected{{/unless}}>— unassigned —</option>
+      {{#each employeeList}}
+        <option value="{{this.employeeID}}"
+          {{#ifEquals this.employeeID ../pokemon.employeeID}}selected{{/ifEquals}}>
+          {{this.codeName}} (ID {{this.employeeID}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form> --}}
+
+<h1>Edit Pokémon #1</h1>
+<form action="/pokemon/1/edit" method="POST">
+  <input type="hidden" name="pokemonID" value="1">
+
+  <label>
+    Level:
+    <input name="level" type="number" value="15" min="1" required>
+  </label><br>
+
+  <label>
+    Species:
+    <select name="speciesName" required>
+      <option value="Pikachu" selected>Pikachu</option>
+      <option value="Charizard">Charizard</option>
+      <option value="Bulbasaur">Bulbasaur</option>
+      <option value="Squirtle">Squirtle</option>
+      <option value="Mewtwo">Mewtwo</option>
+    </select>
+  </label><br>
+
+  <label>
+    Assigned To (Employee):
+    <select name="employeeID">
+      <option value="" disabled>— unassigned —</option>
+      <option value="1">Team Rocket (1)</option>
+      <option value="2" selected>Jessie (2)</option>
+      <option value="3">James (3)</option>
+      <option value="4">Meowth (4)</option>
+      <option value="5">Giovanni (5)</option>
+    </select>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

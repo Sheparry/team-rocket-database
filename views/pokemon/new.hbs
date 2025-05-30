@@ -1,0 +1,33 @@
+<h1>Add New Pokémon</h1>
+<form action="/pokemon/new" method="POST">
+  <label>
+    Level:
+    <input name="level" type="number" min="1" required>
+  </label><br>
+
+  <label>
+    Species:
+    <select name="speciesName" required>
+      <option value="" disabled selected>Select a species</option>
+      {{#each speciesList}}
+        <option value="{{this.speciesName}}">
+          {{this.speciesName}} (#{{this.pokedexEntry}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <label>
+    Assigned To (Employee):
+    <select name="employeeID">
+      <option value="" selected>— unassigned —</option>
+      {{#each employeeList}}
+        <option value="{{this.employeeID}}">
+          {{this.codeName}} (ID {{this.employeeID}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <button type="submit">Create</button>
+</form>

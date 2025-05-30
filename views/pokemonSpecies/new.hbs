@@ -1,0 +1,16 @@
+<h1>Add New Species</h1>
+<form action="/pokemonSpecies/new" method="POST" id='create_species_form'>
+  <label for='create_species_name'>Species Name: </label>
+    <input type='text' name='create_species_name' id='create_species_name' required />
+
+    <label for='create_species_pokedex'>Pokedex #:</label>
+    <input type='number' name='create_species_pokedex' id='create_species_pokedex' min='1' required/>
+
+    <label for='create_species_type1'>Type 1: </label>
+    <input type='text' name='create_species_type1' id='create_species_type1' required/>
+
+    <label for='create_species_type2'>Type 2: </label>
+    <input type='text' name='create_species_type2' id='create_species_type2'/>
+
+    <button type="submit">Create</button>
+</form>

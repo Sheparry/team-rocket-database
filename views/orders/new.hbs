@@ -1,0 +1,52 @@
+<h1>Add Order</h1>
+<form action="/orders/new" method="POST">
+  <label>
+    Customer:
+    <select name="customerID" required>
+      {{#each customers}}
+        <option value="{{this.customerID}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Species:
+    <select name="pokemonSpecies" required>
+      {{#each species}}
+        <option value="{{this.speciesName}}">
+          {{this.speciesName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Min Level:
+    <input name="minLevel" type="number" required>
+  </label><br>
+  <label>
+    Max Level:
+    <input name="maxLevel" type="number" required>
+  </label><br>
+  <label>
+    Meetup Location:
+    <select name="meetupLocation" required>
+      {{#each locations}}
+        <option value="{{this.locationID}}">
+          {{this.locationName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Meetup Date:
+    <input name="meetupDate" type="datetime-local" required>
+  </label><br>
+  <label>
+    Price:
+    <input name="priceOffered" type="number" required>
+  </label><br>
+  <label>
+    Status:
+    <input name="status" type="number" required>
+  </label><br>
+  <button type="submit">Create</button>
+</form>

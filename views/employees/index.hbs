@@ -1,0 +1,96 @@
+<h1>Employees</h1>
+<button onclick="window.location.href='/employees/new'">+ New Employee</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each employees.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each employees}}
+        <tr>
+            <td>{{this.employeeID}}</td>
+            <td>{{this.codeName}}</td>
+            <td>{{this.burnerPhone}}</td>
+            <td>{{this.SupieriorID}}</td>
+            <td>{{this.SupieriorName}}</td>
+            <td>{{this.locationName}}</td>
+
+            {{! DELETE form }}
+            <form action="/employees/delete" method="POST" id='delete_employees_form'>
+                <input type='hidden' name='delete_employees_id' value='{{this.employeeID}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Delete an Employee</h2>
+<form action="/employees/delete" method="POST" onsubmit="return confirm('Really delete this employee?');">
+  <label for="delete-emp">Select Employee to Remove:</label>
+  <select id="delete-emp" name="employeeID" required>
+    <option value="" disabled selected>— choose one —</option>
+    <option value="1">1 – Team Rocket</option>
+    <option value="2">2 – Jessie</option>
+    <option value="3">3 – James</option>
+    <option value="4">4 – Meowth</option>
+    <option value="5">5 – Giovanni</option>
+  </select>
+  <br><br>
+  <button type="submit">Delete Employee</button>
+</form>
+
+<hr>
+
+<h2>Edit an Employee</h2>
+<form action="/employees/edit" method="POST">
+  <label for="edit-emp">Select Employee:</label>
+  <select id="edit-emp" name="employeeID" required>
+    <option value="" disabled selected>— choose one —</option>
+    <option value="1">1 – Team Rocket</option>
+    <option value="2">2 – Jessie</option>
+    <option value="3">3 – James</option>
+    <option value="4">4 – Meowth</option>
+    <option value="5">5 – Giovanni</option>
+  </select>
+  <br><br>
+
+  <label>
+    Code Name:
+    <input type="text" name="codeName" placeholder="New Code Name">
+  </label><br>
+
+  <label>
+    Burner Phone-Numebr:
+    <input type="text" name="burnerPhone" placeholder="New Burner Phone Number">
+  </label><br>
+
+  <label>
+    Reports To (Employee ID):
+    <input type="number" name="reportsTo" placeholder="Which Employee">
+  </label><br>
+
+  <label>
+    Primary Location (ID):
+    <input type="number" name="primaryLocation" placeholder="Which Location" required>
+  </label><br><br>
+
+  <button type="submit">Save Changes</button>
+</form>
+
+

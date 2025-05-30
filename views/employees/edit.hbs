@@ -1,0 +1,70 @@
+{{!-- <h1>Edit Employee</h1>
+<form action="/employees/{{employee.employeeID}}/edit" method="POST">
+  <label>
+    ID:
+    <input name="employeeID"
+           value="{{employee.employeeID}}"
+           readonly>
+  </label><br>
+  <label>
+    Code Name:
+    <input name="codeName"
+           value="{{employee.codeName}}">
+  </label><br>
+  <label>
+    Phone:
+    <input name="burnerPhone"
+           value="{{employee.burnerPhone}}">
+  </label><br>
+  <label>
+    Reports To:
+    <select name="reportsTo">
+      <option value="">— none —</option>
+      {{#each employees}}
+        <option value="{{this.employeeID}}"
+          {{#ifEquals this.employeeID ../employee.reportsTo}}selected{{/ifEquals}}>
+          {{this.codeName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Location ID:
+    <select name="primaryLocation">
+      {{#each locations}}
+        <option value="{{this.locationID}}"
+          {{#ifEquals this.locationID ../employee.primaryLocation}}selected{{/ifEquals}}>
+          {{this.locationName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <button type="submit">Save</button>
+</form> --}}
+
+<h1>Edit Employee</h1>
+<form action="/employees/1/edit" method="POST">
+  <input type="hidden" name="employeeID" value="1">
+
+  <label>
+    Code Name:
+    <input name="codeName" value="Team Rocket" required>
+  </label><br>
+
+  <label>
+    Burner Phone:
+    <input name="burnerPhone" value="5551112222">
+  </label><br>
+
+  <label>
+    Reports To (Employee ID):
+    <input name="reportsTo" value="">
+  </label><br>
+
+  <label>
+    Primary Location (ID):
+    <input name="primaryLocation" value="1" required>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

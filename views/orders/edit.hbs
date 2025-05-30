@@ -1,0 +1,130 @@
+{{!-- <h1>Edit Order</h1>
+<form action="/orders/{{order.orderID}}/edit" method="POST">
+  <label>
+    ID:
+    <input name="orderID"
+           value="{{order.orderID}}"
+           readonly>
+  </label><br>
+  <label>
+    Customer:
+    <select name="customerID">
+      {{#each customers}}
+        <option value="{{this.customerID}}"
+          {{#ifEquals this.customerID ../order.customerID}}selected{{/ifEquals}}>
+          {{this.name}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Species:
+    <select name="pokemonSpecies">
+      {{#each species}}
+        <option value="{{this.speciesName}}"
+          {{#ifEquals this.speciesName ../order.pokemonSpecies}}selected{{/ifEquals}}>
+          {{this.speciesName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Min Level:
+    <input name="minLevel"
+           type="number"
+           value="{{order.minLevel}}">
+  </label><br>
+  <label>
+    Max Level:
+    <input name="maxLevel"
+           type="number"
+           value="{{order.maxLevel}}">
+  </label><br>
+  <label>
+    Meetup Location:
+    <select name="meetupLocation">
+      {{#each locations}}
+        <option value="{{this.locationID}}"
+          {{#ifEquals this.locationID ../order.meetupLocation}}selected{{/ifEquals}}>
+          {{this.locationName}}
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Meetup Date:
+    <input name="meetupDate"
+           type="datetime-local"
+           value="{{order.meetupDate}}">
+  </label><br>
+  <label>
+    Price:
+    <input name="priceOffered"
+           type="number"
+           value="{{order.priceOffered}}">
+  </label --}}
+
+<h1>Edit Order #1</h1>
+<form action="/orders/1/edit" method="POST">
+  <input type="hidden" name="orderID" value="1">
+
+  <label>
+    Customer:
+    <select name="customerID" required>
+      <option value="1" selected>Ash Ketchun</option>
+      <option value="2">Misty Waterflower</option>
+      <option value="3">Brock Harrisno</option>
+      <option value="4">Gary Oak</option>
+      <option value="5">Professor Oak</option>
+    </select>
+  </label><br>
+
+  <label>
+    Species:
+    <select name="pokemonSpecies" required>
+      <option value="Pikachu" selected>Pikachu</option>
+      <option value="Charizard">Charizard</option>
+      <option value="Bulbasaur">Bulbasaur</option>
+      <option value="Squirtle">Squirtle</option>
+      <option value="Mewtwo">Mewtwo</option>
+    </select>
+  </label><br>
+
+  <label>
+    Min Level:
+    <input name="minLevel" type="number" value="10" required>
+  </label><br>
+
+  <label>
+    Max Level:
+    <input name="maxLevel" type="number" value="20" required>
+  </label><br>
+
+  <label>
+    Meetup Location:
+    <select name="meetupLocation" required>
+      <option value="1" selected>Viridian Forest</option>
+      <option value="2">Mt. Moon</option>
+      <option value="3">Cerulean Cave</option>
+      <option value="4">Safari Zone</option>
+      <option value="5">Power Plant</option>
+    </select>
+  </label><br>
+
+  <label>
+    Meetup Date:
+    <input name="meetupDate" type="date" value="2023-06-15" required>
+  </label><br>
+
+  <label>
+    Price Offered:
+    <input name="priceOffered" type="number" value="500" required>
+  </label><br>
+
+  <label>
+    Status:
+    <input name="status" type="number" value="1" required>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

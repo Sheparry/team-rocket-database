@@ -1,0 +1,109 @@
+<h1>Employee Orders</h1>
+<button onclick="window.location.href='/employeesOrders/new'">+ New Employee Order</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each employeesOrders.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each employeesOrders}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.codeName}}</td>
+            <td>{{this.employeeID}}</td>
+
+            {{! DELETE form }}
+            <form action="/employeesOrders/delete" method="POST" id='delete_orders_form'>
+                <input type='hidden' name='delete_employeesOrders_id' value='{{this.orderID}} {{this.employeeID}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Delete an Employee Order</h2>
+<form action="/employeesOrders/delete" method="POST">
+  <label>
+    Order ID:
+    <select name="orderID">
+      <option value="1">1</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </label>
+  <label>
+    Employee ID:
+    <select name="employeeID">
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </label>
+  <button type="submit">Delete Employee Order</button>
+</form>
+
+<hr>
+
+<h2>Edit an Employee Ordert</h2>
+<form action="/employeesOrders/edit" method="POST">
+  <fieldset>
+    <legend>Current Employee Order</legend>
+    <label>
+      Order ID:
+      <select name="currentOrderID">
+        <option value="1">1</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </label>
+    <label>
+      Employee ID:
+      <select name="currentEmployeeID">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>New Values</legend>
+    <label>
+      New Order ID:
+      <label>
+      Name:<br>
+      <input type="text" name="name" placeholder="New OrderID">
+    </label><br>
+      New Employee ID:
+      <label>
+      Name:<br>
+      <input type="text" name="name" placeholder="New EmployeeID">
+    </label><br>
+  </fieldset>
+
+  <button type="submit">Save Changes</button>
+</form>

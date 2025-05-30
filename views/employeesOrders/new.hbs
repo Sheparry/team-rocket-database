@@ -1,0 +1,28 @@
+<h1>Add New Employee Order</h1>
+<form action="/employeesOrders/new" method="POST">
+  <label>
+    Order:
+    <select name="orderID" required>
+      <option value="" disabled selected>Select an order</option>
+      {{#each orders}}
+        <option value="{{this.orderID}}">
+          #{{this.orderID}} ({{this.meetupDate}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <label>
+    Employee:
+    <select name="employeeID" required>
+      <option value="" disabled selected>Select an employee</option>
+      {{#each employees}}
+        <option value="{{this.employeeID}}">
+          {{this.codeName}} (ID {{this.employeeID}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <button type="submit">Create</button>
+</form>

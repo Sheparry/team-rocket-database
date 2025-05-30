@@ -1,0 +1,86 @@
+<h1>Customers</h1>
+<button onclick="window.location.href='/customers/new'">+ New Customer</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each customers.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each customers}}
+        <tr>
+            <td>{{this.customerID}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phoneNumber}}</td>
+            <td>{{this.orderID}}</td>
+
+            {{! DELETE form }}
+            <form action="/customers/delete" method="POST" id='delete_customers_form'>
+                <input type='hidden' name='delete_customers_id' value='{{this.customerID}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+<h2>Delete Customer</h2>
+<form id="deleteForm" method="POST">
+  <label for="deleteSelect">Select Customer to Delete:</label>
+  <select id="deleteSelect" name="customerID">
+    <option value="1">1 – Ash Ketchun</option>
+    <option value="2">2 – Misty Waterflower</option>
+    <option value="3">3 – Brock Harrisno</option>
+    <option value="4">4 – Gary Oak</option>
+    <option value="5">5 – Professor Oak</option>
+  </select>
+  <button type="submit">Delete Customer</button>
+</form>
+
+<hr>
+
+<h2>Edit Customer</h2>
+<form id="editForm" method="POST">
+  <label for="editSelect">Select Customer to Edit:</label>
+  <select id="editSelect" name="customerID">
+    <option value="">-- choose one --</option>
+    <option value="1">1 – Ash Ketchun</option>
+    <option value="2">2 – Misty Waterflower</option>
+    <option value="3">3 – Brock Harrisno</option>
+    <option value="4">4 – Gary Oak</option>
+    <option value="5">5 – Professor Oak</option>
+  </select>
+
+  <div style="margin-top:1em">
+    <label>
+      Name:<br>
+      <input type="text" name="name" placeholder="New name">
+    </label><br>
+
+    <label>
+      Email:<br>
+      <input type="email" name="email" placeholder="New email">
+    </label><br>
+
+    <label>
+      Phone:<br>
+      <input type="text" name="phoneNumber" placeholder="New phone number">
+    </label><br>
+  </div>
+
+  <button type="submit" style="margin-top:0.5em">Save Changes</button>
+</form>

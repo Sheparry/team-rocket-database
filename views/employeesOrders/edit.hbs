@@ -1,0 +1,59 @@
+{{!-- <h1>Edit Assignment</h1>
+<form action="/employeesOrders/{{orderID}}/{{employeeID}}/edit" method="POST">
+  <label>
+    Order:
+    <select name="orderID" required>
+      {{#each orders}}
+        <option value="{{this.orderID}}"
+          {{#ifEquals this.orderID ../orderID}}selected{{/ifEquals}}>
+          #{{this.orderID}} ({{this.meetupDate}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <label>
+    Employee:
+    <select name="employeeID" required>
+      {{#each employees}}
+        <option value="{{this.employeeID}}"
+          {{#ifEquals this.employeeID ../employeeID}}selected{{/ifEquals}}>
+          {{this.codeName}} (ID {{this.employeeID}})
+        </option>
+      {{/each}}
+    </select>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form> --}}
+
+<h1>Edit Assignment</h1>
+<form action="/employeesOrders/1/2/edit" method="POST">
+  <!-- composite PK -->
+  <input type="hidden" name="orderID" value="1">
+  <input type="hidden" name="employeeID" value="2">
+
+  <label>
+    Order:
+    <select name="orderID" required>
+      <option value="1" selected>#1</option>
+      <option value="2">#2</option>
+      <option value="3">#3</option>
+      <option value="4">#4</option>
+      <option value="5">#5</option>
+    </select>
+  </label><br>
+
+  <label>
+    Employee:
+    <select name="employeeID" required>
+      <option value="1">Team Rocket</option>
+      <option value="2" selected>Jessie</option>
+      <option value="3">James</option>
+      <option value="4">Meowth</option>
+      <option value="5">Giovanni</option>
+    </select>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

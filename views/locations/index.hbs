@@ -1,0 +1,108 @@
+{{!-- <h1>All Locations</h1>
+<a href="/locations/new">+ New Location</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each locations}}
+    <tr>
+      <td>{{this.locationID}}</td>
+      <td>{{this.locationName}}</td>
+      <td>
+        <a href="/locations/{{this.locationID}}/edit">Edit</a>
+        <form action="/locations/{{this.locationID}}/delete"
+              method="POST"
+              style="display:inline;"
+              onsubmit="return confirm('Delete {{this.locationName}}?');">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table> --}}
+
+<h1>Locations</h1>
+<button onclick="window.location.href='/locations/new'">+ New Location</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each locations.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each locations}}
+        <tr>
+            <td>{{this.locationID}}</td>
+            <td>{{this.locationName}}</td>
+
+            {{! DELETE form }}
+            <form action="/locations/delete" method="POST" id='delete_locations_form'>
+                <input type='hidden' name='delete_locations_id' value='{{this.locationID}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Delete Location</h2>
+<form action="/locations/delete" method="POST">
+  <label>
+    Select Location to Delete:
+    <select name="locationID" required>
+      <option value="" disabled selected>-- pick one --</option>
+      <option value="1">1 – Viridian Forest</option>
+      <option value="2">2 – Mt. Moon</option>
+      <option value="3">3 – Cerulean Cave</option>
+      <option value="4">4 – Safari Zone</option>
+      <option value="5">5 – Power Plant</option>
+    </select>
+  </label>
+  <br><br>
+  <button type="submit" onclick="return confirm('Really delete this location?')">Delete Location</button>
+</form>
+
+<hr>
+
+<h2>Edit Location</h2>
+<form action="/locations/edit" method="POST">
+  <label>
+    Select Location to Edit:
+    <select name="locationID" required>
+      <option value="" disabled selected>-- pick one --</option>
+      <option value="1">1 – Viridian Forest</option>
+      <option value="2">2 – Mt. Moon</option>
+      <option value="3">3 – Cerulean Cave</option>
+      <option value="4">4 – Safari Zone</option>
+      <option value="5">5 – Power Plant</option>
+    </select>
+  </label>
+  <br><br>
+  <label>
+    New Name:
+    <input type="text" name="locationName" placeholder="New location name" required>
+  </label>
+  <br><br>
+  <button type="submit">Save Changes</button>
+</form>

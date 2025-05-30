@@ -1,0 +1,92 @@
+-<h1>Pokémon</h1>
+<button onclick="window.location.href='/pokemon/new'">+ New Pokémon</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each pokemon.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each pokemon}}
+        <tr>
+            <td>{{this.pokemonID}}</td>
+            <td>{{this.codeName}}</td>
+            <td>{{this.level}}</td>
+            <td>{{this.speciesName}}</td>
+            <td>{{this.pokedexEntry}}</td>
+            <td>{{this.pokemonType1}}</td>
+            <td>{{this.pokemonType2}}</td>
+
+            {{! DELETE form }}
+            <form action="/pokemon/delete" method="POST" id='delete_orders_form'>
+                <input type='hidden' name='delete_pokemon_id' value='{{this.pokemonID}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Delete Pokémon</h2>
+<form action="/pokemon/delete" method="POST">
+  <label for="delete-poke-id">Select Pokémon to Delete:</label>
+  <select name="pokemonID" id="delete-poke-id">
+    <option value="1">1: Pikachu</option>
+    <option value="2">2: Charizard</option>
+    <option value="3">3: Bulbasaur</option>
+    <option value="4">4: Squirtle</option>
+    <option value="5">5: Mewtwo</option>
+  </select><br><br>
+
+  <button type="submit">Delete Pokémon</button>
+</form>
+
+<hr>
+
+<h2>Edit Pokémon</h2>
+<form action="/pokemon/edit" method="POST">
+  <label for="edit-poke-id">Select Pokémon to Edit:</label>
+  <select name="pokemonID" id="edit-poke-id">
+    <option value="1">1: Pikachu</option>
+    <option value="2">2: Charizard</option>
+    <option value="3">3: Bulbasaur</option>
+    <option value="4">4: Squirtle</option>
+    <option value="5">5: Mewtwo</option>
+  </select><br><br>
+
+  <label>
+    New Level:
+    <input type="number" name="minLevel" value="1" required>
+  </label><br>
+
+  <label>
+      New Species:<br>
+      <input type="text" name="name" placeholder="New Species">
+    </label><br>
+
+  <label for="edit-employee">New Employee ID:</label>
+  <select name="employeeID" id="edit-employee">
+    <option value="">— unassigned —</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br><br>
+
+  <button type="submit">Update Pokémon</button>
+</form>

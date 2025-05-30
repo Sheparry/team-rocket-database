@@ -1,0 +1,48 @@
+{{!-- <h1>Edit Species</h1>
+<form action="/pokemonSpecies/{{species.speciesName}}/edit" method="POST">
+  <label>
+    Name:
+    <input name="speciesName"
+           value="{{species.speciesName}}"
+           readonly>
+  </label><br>
+  <label>
+    Pokedex #:
+    <input name="pokedexEntry"
+           type="number"
+           value="{{species.pokedexEntry}}">
+  </label><br>
+  <label>
+    Type 1:
+    <input name="pokemonType1"
+           value="{{species.pokemonType1}}">
+  </label><br>
+  <label>
+    Type 2:
+    <input name="pokemonType2"
+           value="{{species.pokemonType2}}">
+  </label><br>
+  <button type="submit">Save</button>
+</form> --}}
+
+<h1>Edit Pokémon Species</h1>
+<form action="/pokemonSpecies/Pikachu/edit" method="POST">
+  <input type="hidden" name="speciesName" value="Pikachu">
+
+  <label>
+    Pokedex #:
+    <input name="pokedexEntry" type="number" value="25" required>
+  </label><br>
+
+  <label>
+    Type 1:
+    <input name="pokemonType1" value="Electric" required>
+  </label><br>
+
+  <label>
+    Type 2:
+    <input name="pokemonType2" value="">
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

@@ -1,0 +1,69 @@
+<h1>Pokémon Species</h1>
+<button onclick="window.location.href='/pokemonSpecies/new'">+ New Species</button>
+
+<table>
+  <thead>
+    {{! For the table header row, we print the DB attribute names }}
+      <tr>
+          {{#each species.[0]}}
+          <th>
+              {{@key}}
+          </th>
+          {{/each}}
+          <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    {{#each species}}
+        <tr>
+            <td>{{this.speciesName}}</td>
+            <td>{{this.pokedexEntry}}</td>
+            <td>{{this.pokemonType1}}</td>
+            <td>{{this.pokemonType2}}</td>
+
+            {{! DELETE form }}
+            <form action="/pokemonSpecies/delete" method="POST" id='delete_species_form'>
+                <input type='hidden' name='delete_species_name' value='{{this.speciesName}}' />
+                <td>
+                    <button type='submit'>
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Edit a Species</h2>
+<form action="/pokemonSpecies/edit" method="POST" id="update_species_form">
+  <label for='update_species_name'>Select Species: </label>
+    <select name='update_species_name' id='update_species_name' required>
+        <option value='' disabled selected>Select a Species</option>
+        {{#each species}}
+        <option value='{{this.speciesName}}' required>
+            {{this.speciesName}}
+        </option>
+        {{/each}}
+    </select><br><br>
+
+  <label>
+    New Pokedex #:
+    <input type="number" name="update_species_pokedex" placeholder="New Pokedex Number" min="1">
+  </label><br><br>
+
+  <label>
+    New Type 1:
+    <input type="text" name="update_species_type1" placeholder="New Type 1"/>
+  </label><br><br>
+
+  <label>
+    New Type 2:
+    <input type="text" name="update_species_type2" placeholder="New Type 2 (or N/A)"/>
+  </label><br><br>
+
+  <button type="submit">Save Changes</button>
+</form>

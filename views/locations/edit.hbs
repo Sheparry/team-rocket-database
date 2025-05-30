@@ -1,0 +1,27 @@
+{{!-- <h1>Edit Location</h1>
+<form action="/locations/{{location.locationID}}/edit" method="POST">
+  <label>
+    ID:
+    <input name="locationID"
+           value="{{location.locationID}}"
+           readonly>
+  </label><br>
+  <label>
+    Name:
+    <input name="locationName"
+           value="{{location.locationName}}">
+  </label><br>
+  <button type="submit">Save</button>
+</form> --}}
+
+<h1>Edit Location</h1>
+<form action="/locations/1/edit" method="POST">
+  <input type="hidden" name="locationID" value="1">
+
+  <label>
+    Name:
+    <input name="locationName" value="Viridian Forest" required>
+  </label><br>
+
+  <button type="submit">Save</button>
+</form>

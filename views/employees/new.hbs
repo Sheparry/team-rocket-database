@@ -1,0 +1,29 @@
+<h1>Add Employee</h1>
+<form action="/employees/new" method="POST">
+  <label>
+    Code Name:
+    <input name="codeName" required>
+  </label><br>
+  <label>
+    Phone:
+    <input name="burnerPhone">
+  </label><br>
+  <label>
+    Reports To:
+    <select name="reportsTo">
+      <option value="">— none —</option>
+      {{#each employees}}
+        <option value="{{this.employeeID}}">{{this.codeName}}</option>
+      {{/each}}
+    </select>
+  </label><br>
+  <label>
+    Location ID:
+    <select name="primaryLocation" required>
+      {{#each locations}}
+        <option value="{{this.locationID}}">{{this.locationName}}</option>
+      {{/each}}
+    </select>
+  </label><br>
+  <button type="submit">Create</button>
+</form>
