@@ -1,2 +1,2 @@
 # team-rocket-database
-http://classwork.engr.oregonstate.edu:30334/
+http://classwork.engr.oregonstate.edu:4921/
